@@ -1,4 +1,4 @@
-import React from 'react
+import React from 'react'
 import { Route, Link } from 'react-router-dom';
 import './App.css';
 import Landing from './components/Landing';
@@ -11,6 +11,7 @@ function App() {
        <nav>
         <Link to='/'>Landing</Link>
         <Link to='/library'>Library</Link>
+        <Link to='/Album'>Album</Link>
        </nav>
       <h1>Bloc Jams</h1>
       </header>
