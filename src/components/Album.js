@@ -13,7 +13,8 @@ class Album extends Component {
      this.state = {
        album: album,
        currentSong: album.songs[0],
-       isPlaying: false
+       isPlaying: false,
+       hovered: null
      };
 
      this.audioElement = document.createElement('audio');
@@ -38,26 +39,29 @@ class Album extends Component {
    handleSongClick(song) {
      const isSameSong = this.state.currentSong === song;
      if (this.state.isPlaying && isSameSong) {
-       this.pause();
+         this.pause();
      } else {
+         if (!isSameSong) { this.setSong(song); }
+            this.play();
        this.play();
      }
   }
 
-  showSongIcon(index, song) {
-         if (this.state.currentSong === song && this.state.isPlaying) {
-             return <ion-icon name="pause"></ion-icon>
-         } else if (this.state.hovered === index) {
-             return <ion-icon name="play"></ion-icon>
-         }
+    showSongIcon(index, song) {
+        if (this.state.currentSong === song && this.state.isPlaying) {
+           return <ion-icon name="pause"></ion-icon>
+        } else if (this.state.hovered === index) {
+          return <ion-icon name="play"></ion-icon>
+        }
 
-        return index+1
-    }
-    handleSongRowHover(index) {
-        this.setState({hovered: index})
+          return index+1
+      }
+      handleSongRowHover(index) {
+          this.setState({hovered: index})
 
 
-    }
+      }
+
 
   render() {
     return (
