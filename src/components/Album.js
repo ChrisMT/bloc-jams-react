@@ -74,8 +74,11 @@ class Album extends Component {
 		    const newIndex = Math.max(0, currentIndex + 1);
 	      const newSong = this.state.album.songs[newIndex];
 		    this.setSong(newSong);
-		    this.play();}
-
+		    this.play();
+      }
+        formatTime(seconds){
+          return seconds ? `${Math.floor(seconds/60)}:${Number(seconds % 60 / 100).toFixed(2).substr(2,3)}`: '-:--';
+      }
 
   render() {
     return (
@@ -116,6 +119,8 @@ class Album extends Component {
                     handleSongClick={() => this.handleSongClick(this.state.currentSong)}
                     handlePrevClick={() => this.handlePrevClick()}
                     handleNextClick={() => this.handleNextClick()}
+                    formattedTime={this.formatTime(this.audioElement.currentTime)}
+
 
 
                   />
